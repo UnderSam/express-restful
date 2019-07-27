@@ -75,7 +75,7 @@ router.patch('/:id',function(req,res){
   console.log(`patch ${customer_id} name to ${customer_name}`);
 
   db
-  .query(`Update customer_info set customer_name = '${customer_name}' where customer_id = '${customer_id}'`)
+  .query(/* Your Query here */)
   .then(data=>res.status(204).json({status:"resource updated successfully",data:""}))
   .catch(err=>res.status(400).json({status:"Bad Request",data:err}))
   
@@ -84,7 +84,7 @@ router.delete('/:id',function(req,res){
    let customer_id = req.params.id;
    let db = conn.emit(false, 'testdb');
    db
-   .query(`Delete from customer_info where customer_id = '${customer_id}'`)
+   .query(/* Your Query here */)
    .then(data=>res.status(204).json({status:"resource deleted successfully",data:""}))
    .catch(err=>res.status(400).json({status:"Bad Request",data:err}))
 });

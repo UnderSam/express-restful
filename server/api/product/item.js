@@ -5,9 +5,8 @@ var conn = require('../connect');
 /* GET */
 router.get('/', function(req, res, next) {
   let db = conn.emit(false, 'testdb');
-  qs = `select * from product_info `;
   db
-   .query(qs)
+   .query(/* Your Query here */)
    .then(data => {
       res.status(200).json({status:"OK",data:data});
    })
@@ -46,12 +45,12 @@ router.post('/',function(req,res){
         }
       }
       db
-      .query(`select product_id from product_info where product_id='${product_id}'`)
+      .query(/* Your Check Query here */)
       .then(data => {
 
          if(data.length === 0){
             db
-            .query(` insert into product_info (product_id,product_price,product_name) values ('${product_id}','${product_price}','${product_name}') `)
+            .query(/* Your Query here */)
             .then(()=>{
                 res.status(201).json({status:"Create",data:''})
             })
