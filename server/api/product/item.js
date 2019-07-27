@@ -4,7 +4,7 @@ var conn = require('../connect');
 
 /* GET */
 router.get('/', function(req, res, next) {
-  let db = conn.emit(false, 'testdb');
+  let db = conn.emit(false, 'test_db');
   db
    .query(/* Your Query here */)
    .then(data => {
@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 });
 /* GET ID*/
 router.get('/:id', function(req, res, next) {
-  let db = conn.emit(false, 'testdb');
+  let db = conn.emit(false, 'test_db');
   qs = `select * from product_info where product_id = '${req.params.id}'`;
   db
    .query(qs)
@@ -36,7 +36,7 @@ router.post('/',function(req,res){
    if( product_id == undefined | product_name == undefined ){
      res.status(400).json({status:"Bad Request",data:'Wrong format of post body'});
    }else{
-      let db = conn.emit(false, 'testdb');
+      let db = conn.emit(false, 'test_db');
       let res_json = {
         status_code : 0,
         datas : {

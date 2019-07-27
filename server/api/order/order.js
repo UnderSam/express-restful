@@ -3,7 +3,7 @@ var router = express.Router();
 var conn = require('../connect');
 
 router.get('/', function(req, res, next) {
-    let db = conn.emit(false, 'testdb');
+    let db = conn.emit(false, 'test_db');
     qs = `SELECT customer_name,product_name,order_value,product_price,order_date FROM order_info JOIN customer_info JOIN product_info WHERE order_info.customer_id = customer_info.customer_id AND order_info.product_id = product_info.product_id`;
     db
      .query(qs)
@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
   });
   /* GET ID*/
 router.get('/:id', function(req, res, next) {
-    let db = conn.emit(false, 'testdb');
+    let db = conn.emit(false, 'test_db');
     qs = `SELECT customer_name,product_name,order_value,product_price,order_date FROM order_info JOIN customer_info JOIN product_info WHERE order_info.customer_id = customer_info.customer_id AND order_info.product_id = product_info.product_id and order_number = '${req.params.id}'`;
     db
      .query(qs)

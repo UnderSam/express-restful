@@ -4,7 +4,7 @@ var conn = require('../connect');
 
 /* GET */
 router.get('/', function(req, res, next) {
-  let db = conn.emit(false, 'testdb');
+  let db = conn.emit(false, 'test_db');
   qs = `select * from customer_info `;
   db
    .query(qs)
@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 });
 /* GET ID*/
 router.get('/:id', function(req, res, next) {
-  let db = conn.emit(false, 'testdb');
+  let db = conn.emit(false, 'test_db');
   qs = `select * from customer_info where customer_id = '${req.params.id}'`;
   db
    .query(qs)
@@ -36,7 +36,7 @@ router.post('/',function(req,res){
    if( customer_id == undefined | customer_name == undefined ){
      res.status(400).json({status:"Bad Request",data:'Wrong format of post body'});
    }else{
-      let db = conn.emit(false, 'testdb');
+      let db = conn.emit(false, 'test_db');
       let res_json = {
         status_code : 0,
         datas : {
@@ -71,7 +71,7 @@ router.post('/',function(req,res){
 router.patch('/:id',function(req,res){
   let customer_id = req.params.id;
   let customer_name = req.body.customer_name;
-  let db = conn.emit(false, 'testdb');
+  let db = conn.emit(false, 'test_db');
   console.log(`patch ${customer_id} name to ${customer_name}`);
 
   db
@@ -82,7 +82,7 @@ router.patch('/:id',function(req,res){
 })
 router.delete('/:id',function(req,res){
    let customer_id = req.params.id;
-   let db = conn.emit(false, 'testdb');
+   let db = conn.emit(false, 'test_db');
    db
    .query(/* Your Query here */)
    .then(data=>res.status(204).json({status:"resource deleted successfully",data:""}))
